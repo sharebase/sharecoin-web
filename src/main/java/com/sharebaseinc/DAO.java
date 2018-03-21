@@ -1,11 +1,13 @@
 package com.sharebaseinc;
 
+
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.Callable;
+
 import org.web3j.abi.EventEncoder;
 import org.web3j.abi.FunctionEncoder;
 import org.web3j.abi.TypeReference;
@@ -27,6 +29,7 @@ import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.tuples.generated.Tuple13;
 import org.web3j.tx.Contract;
 import org.web3j.tx.TransactionManager;
+
 import rx.Observable;
 import rx.functions.Func1;
 
