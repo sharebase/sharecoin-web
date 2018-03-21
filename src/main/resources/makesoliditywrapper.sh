@@ -1,2 +1,4 @@
-solc dao.sol --bin --abi --optimize -o output
-web3j solidity generate /path/to/dao.bin /path/to/dao.abi -o /path/to/src/main/java -p com.sharebase
+git clone https://github.com/slockit/DAO.git 
+solc DAO.sol --bin --abi --optimize -o output
+
+web3j solidity generate output/DAO.bin output/DAO.abi -o src/main/java -p com.sharebaseinc
