@@ -8,6 +8,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.web3j.protocol.Web3j;
 
+import com.sharebaseinc.facade.DaoBusinessFacade;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:test-config.xml")
 public class DaoBusinessFacadeTest {

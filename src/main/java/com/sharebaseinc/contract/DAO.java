@@ -1,4 +1,4 @@
-package com.sharebaseinc;
+package com.sharebaseinc.contract;
 
 
 import java.math.BigInteger;
