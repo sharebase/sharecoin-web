@@ -17,21 +17,19 @@ public class DaoBusinessFacadeTest {
 	@Autowired
 	private DaoBusinessFacade daoFacade;
 
-	
-	
 	@Test
-	public void test() {
-		
+	public void test() throws Exception {
+
 		Web3j web3j = daoFacade.getWeb3j();
-		
+
+//		daoFacade.setAccount();
+
 		Assert.assertNotNull(daoFacade);
-		
+
 		Assert.assertNotNull(web3j);
-		
-		System.out.println("gasprice :" +web3j.ethGasPrice().getId());
-		
-		
-		
+
+		System.out.println("gasprice :" + web3j.ethGasPrice().getId());
+
 	}
 
 }
