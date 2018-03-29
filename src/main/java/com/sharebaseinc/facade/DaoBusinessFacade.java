@@ -17,6 +17,15 @@ public class DaoBusinessFacade {
 	private Web3j web3j;
 	
 	
+	public void setAccount(){
+		
+		
+		
+
+		
+	}
+	
+	
 	
 
 	public Web3j getWeb3j(){
