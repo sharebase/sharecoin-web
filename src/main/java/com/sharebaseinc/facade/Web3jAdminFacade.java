@@ -51,4 +51,16 @@ public class Web3jAdminFacade {
 		
 		
 	}
+	
+	
+	
+	public String createAccount(String password) throws IOException{
+		
+		String accountId = admin.personalNewAccount(password).send().getAccountId();
+		
+		
+		return accountId;
+	
+		
+	}
 }

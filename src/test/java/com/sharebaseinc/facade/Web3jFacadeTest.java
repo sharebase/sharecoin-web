@@ -27,5 +27,15 @@ public class Web3jFacadeTest {
 	}
 	
 	
+	
+
+	@Test
+	public void testWeb3j(){
+		
+		
+		
+	}
+	
+	
 
 }
