@@ -1,0 +1,1 @@
+mysqladmin create sharecoin  -u root -p
