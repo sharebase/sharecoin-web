@@ -2,7 +2,7 @@
  "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 <web-app>
-
+	<icon></icon>
 	<display-name>sharebase.event.manager</display-name>
 	<description>sharebase test site</description>
 	<!-- <context-param> -->
@@ -50,7 +50,13 @@
 	<servlet-mapping>
 		<servlet-name>default</servlet-name>
 		<url-pattern>/img/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
 		<url-pattern>/intro/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
 		<url-pattern>/help/*</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
