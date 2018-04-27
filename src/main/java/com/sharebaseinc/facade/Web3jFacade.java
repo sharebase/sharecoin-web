@@ -59,10 +59,11 @@ public class Web3jFacade {
 
 			@Override
 			public void onNext(Transaction t) {
-				// TODO Auto-generated method stub
+				
+				System.out.println(t.getBlockNumber());
 				
 			}
-
+			
 		});
 
 	}
