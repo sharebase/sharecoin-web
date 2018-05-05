@@ -1,4 +1,4 @@
-package com.sharebaseinc.facade;
+package com.sharebaseinc.contract.factory;
 
 import java.math.BigInteger;
 
@@ -9,19 +9,31 @@ import org.web3j.crypto.WalletUtils;
 import org.web3j.protocol.Web3j;
 
 import com.sharebaseinc.contract.DAO;
+import com.sharebaseinc.contract.DaoDecorator;
 
 @Service
-public class DaoBusinessFacade {
+public class DaoFactory {
 
 	private DAO dao;
 
 	@Autowired
 	private Web3j web3j;
 
-	public void setAccount() throws Exception {
+	/**
+	 * 
+	 * すでにある DAO contractを使って、新たにコントラクト実態を作成する
+	 * 
+	 * 
+	 * 
+	 * @throws Exception
+	 */
+	public DAO deployNewDaoContract() throws Exception {
 
 		String password = "";
-		String string = "";
+
+		// private keyのパス
+
+		String string = "/home/kouichi/data_testnet/testnet/keystore/UTC--2017-08-14T07-23-26.961758766Z--d79268b86aeb0996dad3ea2a9373e78fae512976";
 
 		Credentials credentials = WalletUtils.loadCredentials(password, string);
 
@@ -32,20 +44,24 @@ public class DaoBusinessFacade {
 		BigInteger _proposalDeposit = new BigInteger("0");
 		String _token = "";
 
-		DAO dao = DAO.deploy(web3j, credentials, gasPrice, gasLimit, _curator,_proposalDeposit, _token).send();
-		
-		
-		dao.numberOfProposals().send();
+		DAO dao = DAO.deploy(web3j, credentials, gasPrice, gasLimit, _curator, _proposalDeposit, _token).send();
 
+		return dao;
 	}
 
-	public Web3j getWeb3j() {
-		return web3j;
-	}
+	/**
+	 * アドレスと ABIの値から smart contractのledgerデータとアクセスする。
+	 * 
+	 * @return
+	 */
+	public DaoDecorator loadFromLedger(String contractAddress, Credentials credentials, BigInteger gasPrice, BigInteger gasLimit) {
 
-	public void summaryDaoContract() {
+		DAO dao = DAO.load(contractAddress, this.web3j, credentials, gasPrice, gasLimit);
 
-		dao.verifyPreSupport(BigInteger.ONE);
+		
+		DaoDecorator result = new DaoDecorator(dao);
+		
+		return result;
 
 	}
 

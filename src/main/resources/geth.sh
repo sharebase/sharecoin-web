@@ -23,7 +23,11 @@ curl -X POST --data '{"jsonrpc":"2.0" , "method":"personal_newAccount","params":
 curl -X POST --data '{"jsonrpc":"2.0" , "method":"personal_listAccounts","params":[],"id":10}' localhost:8545
 
 #curl -X POST --data '{"jsonrpc":"2.0" , "method":"personal_listAccounts","params":[],"id":10}' localhost:8545
-#{"jsonrpc":"2.0","id":10,"result":["0xd79268b86aeb0996dad3ea2a9373e78fae512976","0x195bc791f8b2c2924adb1932f755c5245a2a1450","0x02517e3fcc7f95e35b8e350be3688821141d1674","0x65fce20dcb957d25a347a9bf356a7f633386a241"]}
+#{"jsonrpc":"2.0","id":10,"result":
+#["0xd79268b86aeb0996dad3ea2a9373e78fae512976",
+#"0x195bc791f8b2c2924adb1932f755c5245a2a1450",
+#"0x02517e3fcc7f95e35b8e350be3688821141d1674",
+#"0x65fce20dcb957d25a347a9bf356a7f633386a241"]}
 
 
 curl -X POST --data '{"jsonrpc":"2.0" , "method":"personal_unlockAccount","params":["0x65fce20dcb957d25a347a9bf356a7f633386a241","pass2",300],"id":10}' localhost:8545
@@ -45,10 +49,9 @@ printf '%d\n' "0x6f05b59d3b20000"
  nohup geth --networkid 4649 --nodiscover --max peers 0 --datadir~/data_testnet --mine --minerthreads 1 --rpc --rpcaddr "0.0.0.0" --rpcport 8545 --rpcccordsdomain "*" --rpcapi "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --unlock 0,1 --password~/data_testnet/password --verbosity 6 2>>~/data_testnet/geth.log &
 #起動シェル
  nohup geth --networkid 4649 --nodiscover --maxpeers 0 --datadir ~/data_testnet --mine --minerthreads 1 --rpc --rpcaddr "0.0.0.0" --rpcport 8545  --rpccorsdomain "*" --rpcapi "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --unlock 0,1 --password ~/data_testnet/password --verbosity 6 2>> ~/data_testnet/geth.log &
-
+#console接続
 geth attach rpc:http://localhost:8545
-
-
+# UTC--2018-04-24T16-02-33.961849128Z--41965324355a99d98b120b7b507af9affa47f25e
 
 
 

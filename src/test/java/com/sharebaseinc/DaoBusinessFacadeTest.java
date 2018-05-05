@@ -1,6 +1,7 @@
 package com.sharebaseinc;
 
-import org.junit.Assert;
+import java.math.BigInteger;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +11,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
-import org.web3j.protocol.Web3j;
+import org.web3j.crypto.Credentials;
+import org.web3j.crypto.WalletUtils;
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
-import com.sharebaseinc.facade.DaoBusinessFacade;
+import com.sharebaseinc.contract.DaoDecorator;
+import com.sharebaseinc.contract.factory.DaoFactory;
 
 
 
@@ -24,20 +27,23 @@ import com.sharebaseinc.facade.DaoBusinessFacade;
 public class DaoBusinessFacadeTest {
 
 	@Autowired
-	private DaoBusinessFacade daoFacade;
+	private DaoFactory daoFactory;
 
 	@Test
 	public void test() throws Exception {
+		
 
-		Web3j web3j = daoFacade.getWeb3j();
+		BigInteger gasPrice = new BigInteger("1");
+		BigInteger gasLimit= new BigInteger("2");
+		
+		
+		String contractAddress = "";
+		
+		Credentials credential = WalletUtils.loadCredentials("", "/home/kouichi/data_testnet/keystore/UTC--2017-08-14T07-23-26.961758766Z--d79268b86aeb0996dad3ea2a9373e78fae512976");
+		
+		DaoDecorator dao =  daoFactory.loadFromLedger(contractAddress, credential, gasPrice, gasLimit);
+		dao.getCurator();
 
-		// daoFacade.setAccount();
-
-		Assert.assertNotNull(daoFacade);
-
-		Assert.assertNotNull(web3j);
-
-		System.out.println("gasprice :" + web3j.ethGasPrice().getId());
 
 	}
 
