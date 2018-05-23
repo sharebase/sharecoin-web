@@ -7,13 +7,19 @@
     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
 
-
+    <!-- this switches on the load-time weaving -->
+	<context:load-time-weaver aspectj-weaving="on"/>
+	<context:spring-configured />
 	<context:component-scan base-package="org.web3j.spring.autoconfigure" />
-	<context:component-scan base-package="com.sharebaseinc"></context:component-scan>
+	<context:component-scan base-package="com.sharebaseinc.*"></context:component-scan>
 
+	<context:annotation-config />
 
 	<context:property-placeholder location="classpath:*.properties" />
-
+	
+	<bean class="com.sharebaseinc.wallet.User" scope="prototype" id="com.sharebaseinc.wallet.User">
+	  <property name="ethAccountService" ref="ethAccountService"/>
+	</bean>
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/sharecoin" />

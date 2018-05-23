@@ -71,6 +71,15 @@ public class Web3jFacadeTest {
 
 	}
 
+	/**
+	 * 
+	 * 
+	 * 
+	 * parent blockをblockchainにシステムを取り込む
+	 * 
+	 * 
+	 * @throws IOException
+	 */
 	@Test
 	public void testBlock() throws IOException {
 
@@ -90,30 +99,36 @@ public class Web3jFacadeTest {
 
 			EthBlock eb = web3j.getBlockNumberFrom(parent);
 
-			System.out.println("parent " + eb.getBlock().getNumber());
+//			System.out.println("parent " + eb.getBlock().getNumber());
 
 			trans = eb.getBlock().getTransactions();
 
-			System.out.println("trans " + trans.size());
+//			System.out.println("trans " + trans.size());
 
 			for (EthBlock.TransactionResult tran : trans) {
 
 				System.out.println(tran.get());
+				
+				
 
 			}
 
 			block = eb;
-		} while (!block.getBlock().getParentHash().equals(""));
-
+		} while (trans.isEmpty());
+		
+		
+		System.out.println(block.getBlock().getHash());
+		
 	}
 
 	@Test
 	public void testTransaction() throws IOException {
 
 		String transactionHash = "0x654578b2059c04558e27bb1d47ca9bfd389c738237de5ff87a3e2b0d25a1ad27";
-
+		transactionHash ="0x548baa79671481ae23dafb230665dde8fcb5c8a320ec03bd745f6ab96084dadc";
 		// EthTransaction etran = web3j.getTransaction(transactionHash);
 
+		//0x95776df723da45f8e1b39f8f3d80d595cb28be653f545601d16eca4036bc13c4
 		Transaction t = web3j.getTransactionFromHash(transactionHash);
 		System.out.println("transaction from " + t.getFrom());
 
@@ -139,6 +154,8 @@ public class Web3jFacadeTest {
 	public void testTransactionFromBlock() throws IOException{
 		
 		String blockHash = "0x548baa79671481ae23dafb230665dde8fcb5c8a320ec03bd745f6ab96084dadc";
+		// 0x95776df723da45f8e1b39f8f3d80d595cb28be653f545601d16eca4036bc13c4
+		blockHash = "0x95776df723da45f8e1b39f8f3d80d595cb28be653f545601d16eca4036bc13c4";
 		BigInteger transactionIndex = new BigInteger("0");
 		
 		Transaction t = web3j.getTransactionFromBlockHash(blockHash, transactionIndex);
@@ -152,6 +169,11 @@ public class Web3jFacadeTest {
 		
 		//27 
 		System.out.println("transaction V " + t.getV());
+
+		System.out.println("transaction value " + t.getValue().intValue());
+		System.out.println("transaction to " + t.getTo());
+		System.out.println("transaction gas " + t.getGas());
+		
 		
 		
 		

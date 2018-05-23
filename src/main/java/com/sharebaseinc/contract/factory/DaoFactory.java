@@ -29,7 +29,7 @@ public class DaoFactory {
 	 */
 	public DAO deployNewDaoContract() throws Exception {
 
-		String password = "";
+		String password = "pass0";
 
 		// private keyのパス
 

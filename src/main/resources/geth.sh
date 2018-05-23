@@ -46,9 +46,8 @@ curl -X POST --data '{"jsonrpc":"2.0" , "method":"eth_getBalance","params":[ "0x
 {"jsonrpc":"2.0","id":10,"result":"0x6f05b59d3b20000"}
 
 printf '%d\n' "0x6f05b59d3b20000"
- nohup geth --networkid 4649 --nodiscover --max peers 0 --datadir~/data_testnet --mine --minerthreads 1 --rpc --rpcaddr "0.0.0.0" --rpcport 8545 --rpcccordsdomain "*" --rpcapi "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --unlock 0,1 --password~/data_testnet/password --verbosity 6 2>>~/data_testnet/geth.log &
 #起動シェル
- nohup geth --networkid 4649 --nodiscover --maxpeers 0 --datadir ~/data_testnet --mine --minerthreads 1 --rpc --rpcaddr "0.0.0.0" --rpcport 8545  --rpccorsdomain "*" --rpcapi "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --unlock 0,1 --password ~/data_testnet/password --verbosity 6 2>> ~/data_testnet/geth.log &
+nohup geth --networkid 4649 --nodiscover --maxpeers 0 --datadir ~/data_testnet --mine --minerthreads 1 --rpc --rpcaddr "0.0.0.0" --rpcport 8545  --rpccorsdomain "*" --rpcapi "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --unlock 0,1 --password ~/data_testnet/password --verbosity 6 2>> ~/data_testnet/geth.log &
 #console接続
 geth attach rpc:http://localhost:8545
 # UTC--2018-04-24T16-02-33.961849128Z--41965324355a99d98b120b7b507af9affa47f25e
