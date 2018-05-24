@@ -7,8 +7,8 @@
     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
 
-    <!-- this switches on the load-time weaving -->
-	<context:load-time-weaver aspectj-weaving="on"/>
+	<!-- this switches on the load-time weaving -->
+	<!-- <context:load-time-weaver aspectj-weaving="on"/> -->
 	<context:spring-configured />
 	<context:component-scan base-package="org.web3j.spring.autoconfigure" />
 	<context:component-scan base-package="com.sharebaseinc.*"></context:component-scan>
@@ -16,15 +16,43 @@
 	<context:annotation-config />
 
 	<context:property-placeholder location="classpath:*.properties" />
-	
+
 	<bean class="com.sharebaseinc.wallet.User" scope="prototype" id="com.sharebaseinc.wallet.User">
-	  <property name="ethAccountService" ref="ethAccountService"/>
+		<property name="ethAccountService" ref="ethAccountService" />
 	</bean>
+
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager" p:entityManagerFactory-ref="entityManagerFactory" />
+
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+		</property>
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan" value="com.sharebaseinc" />
+
+	</bean>
+
+
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" -->
+	<!-- destroy-method="close"> -->
+	<!-- <property name="driverClassName" value="${jdbc.driverClassName}" /> -->
+	<!-- <property name="url" value="${jdbc.url}" /> -->
+	<!-- <property name="username" value="${jdbc.username}" /> -->
+	<!-- <property name="password" value="${jdbc.password}" /> -->
+	<!-- <property name="maxActive" value="100" /> -->
+	<!-- <property name="maxIdle" value="30" /> -->
+	<!-- <property name="maxWait" value="16000" /> -->
+	<!-- <property name="minIdle" value="0" /> -->
+	<!-- </bean> -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/sharecoin" />
 		<property name="username" value="" />
 		<property name="password" value="" />
 	</bean>
+
 
 </beans>
