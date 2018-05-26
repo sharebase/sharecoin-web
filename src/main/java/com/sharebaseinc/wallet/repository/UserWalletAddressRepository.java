@@ -23,7 +23,7 @@ public class UserWalletAddressRepository {
 		
 		String sqlString ="select * from industryMiddle order by sicCode";
 	
-		Query query = entityManager.createNativeQuery("select * from userWalletAddress where userId = ?",UserWalletAddressEntity.class);
+		Query query = entityManager.createNativeQuery("select * from userWalletAddressEntity where userId = ?",UserWalletAddressEntity.class);
 
 		query.setParameter(1, userId);
 		@SuppressWarnings("unchecked")

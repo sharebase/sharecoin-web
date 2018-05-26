@@ -34,15 +34,18 @@ public class UserWalletAddressRepositoryTest {
 	}
 	
 
-	public void setUp() {
-
-	}
 
 	@Test
 	@ExpectedDatabase("expectedData.xml")
 	@DatabaseSetup("sampleData.xml")
 	public void test() {
+		
+		
 		repo.find("kouichi");
+		
+		
+		
+		
 	}
 
 }
