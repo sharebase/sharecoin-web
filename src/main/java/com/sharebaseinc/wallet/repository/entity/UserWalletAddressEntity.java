@@ -16,6 +16,30 @@ public class UserWalletAddressEntity {
 	
 	@Column
 	private String keyPath;
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getKeyPath() {
+		return keyPath;
+	}
+
+	public void setKeyPath(String keyPath) {
+		this.keyPath = keyPath;
+	}
 	
 	
 

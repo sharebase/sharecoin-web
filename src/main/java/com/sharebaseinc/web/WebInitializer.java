@@ -5,6 +5,7 @@ import javax.servlet.ServletException;
 
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 
+
 public class WebInitializer extends SpringBootServletInitializer {
 
 	@Override
