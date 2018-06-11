@@ -36,7 +36,6 @@ public class DaoBusinessFacadeTest {
 		BigInteger gasPrice = new BigInteger("1");
 		BigInteger gasLimit= new BigInteger("2");
 		
-		
 		String contractAddress = "";
 		
 		Credentials credential = WalletUtils.loadCredentials("", "/home/kouichi/data_testnet/keystore/UTC--2017-08-14T07-23-26.961758766Z--d79268b86aeb0996dad3ea2a9373e78fae512976");
