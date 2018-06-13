@@ -1,12 +1,15 @@
 package com.sharebaseinc.facade;
 
+import java.io.File;
 import java.io.IOException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
 import java.util.List;
 
 import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.ldap.embedded.EmbeddedLdapProperties.Credential;
 import org.springframework.stereotype.Service;
 import org.web3j.crypto.CipherException;
 import org.web3j.crypto.Credentials;
@@ -20,7 +23,7 @@ import com.sharebaseinc.wallet.repository.entity.UserWalletAddressEntity;
 public class EthAccountService {
 	
 
-	@Value("${ethereum.wallet.dir:~/.ethereum/keystore/}") 
+	@Value("${ethereum.wallet.dir:/home/kouichi/.ethereum/keystore/}") 
 	private String walletDirPath;
 	
 	@Autowired
@@ -60,5 +63,15 @@ public class EthAccountService {
 	}
 	
 	
-
+	
+	public void createWallet(String password) throws NoSuchAlgorithmException, NoSuchProviderException, InvalidAlgorithmParameterException, CipherException, IOException{
+		
+		
+		File destinationDirectory = new File(walletDirPath);
+		WalletUtils.generateFullNewWalletFile(password, destinationDirectory);
+		
+	}
+	
+	
+	
 }

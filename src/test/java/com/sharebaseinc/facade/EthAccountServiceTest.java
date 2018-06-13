@@ -1,6 +1,9 @@
 package com.sharebaseinc.facade;
 
 import java.io.IOException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
 
 import javax.transaction.Transactional;
 
@@ -39,6 +42,15 @@ public class EthAccountServiceTest extends EthAccountService {
 		User u = new User();
 		u.setUserId("kouichi");
 		ethAccountService.getWalletCredential(u, "");
+		
+		
+	}
+	
+	@Test
+	public void testCreateNewWallet() throws IOException, CipherException, NoSuchAlgorithmException, NoSuchProviderException, InvalidAlgorithmParameterException {
+		
+
+		ethAccountService.createWallet("pass1234");
 		
 		
 	}
