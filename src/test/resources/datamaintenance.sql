@@ -1,5 +1,3 @@
-grant all privileges on sharecoin.* to sharecoin@"%" identified by "sharecoin";
-flush privileges;
 create table UserWalletAddressEntity
 ( userId varchar(255) not null ,
 address varchar(255) not null,

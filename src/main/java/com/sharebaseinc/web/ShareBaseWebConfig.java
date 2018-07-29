@@ -9,6 +9,8 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.Web3jService;
 import org.web3j.protocol.admin.Admin;
@@ -23,7 +25,9 @@ import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 
 @Configuration
-public class ShareBaseWebConfig {
+@EnableWebMvc
+
+public class ShareBaseWebConfig implements WebMvcConfigurer {
 	private static Log log = LogFactory.getLog(Web3jAutoConfiguration.class);
 
 	@Autowired
