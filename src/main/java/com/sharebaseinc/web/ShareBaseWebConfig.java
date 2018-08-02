@@ -26,7 +26,6 @@ import okhttp3.logging.HttpLoggingInterceptor;
 
 @Configuration
 @EnableWebMvc
-
 public class ShareBaseWebConfig implements WebMvcConfigurer {
 	private static Log log = LogFactory.getLog(Web3jAutoConfiguration.class);
 
